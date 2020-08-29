@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lab3.pkg204030790.salgado;
+package git;
+
+
 
 /**
  *
@@ -22,7 +24,6 @@ public class Lab3204030790Salgado {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Pastel de chocolate y pera");
     }
     
 }
