@@ -6,7 +6,6 @@
 package git;
 
 
-
 /**
  *
  * @author Bryan
@@ -23,7 +22,13 @@ public class Lab3204030790Salgado {
      * Por último existirá una clase llamada Repositorio, está contendra las cuatro zonas
      */
     public static void main(String[] args) {
+        Archivo k= new Archivo("Pepa", 20, 4 ,2000, "Bla Bla \nBla");
+        Index s= new Index();
+        s.setIndex(k);
+        Archivo nuevo;
+        nuevo= (s.getContenido()).get(0);
         // TODO code application logic here
+        System.out.println(nuevo.getNombre());
     }
     
 }
