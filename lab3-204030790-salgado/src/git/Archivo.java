@@ -27,4 +27,7 @@ public class Archivo {
     public String getContenido(){
         return this.contenido;
     }
+    public int[] getFecha(){
+        return this.fecha;
+    }
 }
