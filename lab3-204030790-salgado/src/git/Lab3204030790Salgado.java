@@ -30,6 +30,11 @@ public class Lab3204030790Salgado {
         // TODO code application logic here
         System.out.println(nuevo.getNombre());
     }
+    public Repositorio getInit(String nombre, String autor){
+        Repositorio repositorio;
+        repositorio= new Repositorio(nombre, autor);
+        return repositorio;
+    }
     
 }
  
