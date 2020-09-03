@@ -19,8 +19,7 @@ public class LocalRepository {
         this.cantidad=0;
     }
     public void setLocalRepository(Commit elemento){
-        boolean add;
-        add = (this.contenido).add(elemento);
+        (this.contenido).add(elemento);
         this.cantidad= this.cantidad + 1;
     }
     public ArrayList<Commit> getLocalRepository(){

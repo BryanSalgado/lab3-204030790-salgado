@@ -19,8 +19,7 @@ public class Workspace {
         this.cantidad=0;
     }
     public void setWorkspace(Archivo elemento){
-        boolean add;
-        add = (this.contenido).add(elemento);
+        (this.contenido).add(elemento);
         this.cantidad= this.cantidad + 1;
     }
     public ArrayList<Archivo> getContenido(){

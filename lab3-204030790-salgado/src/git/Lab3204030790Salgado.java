@@ -5,6 +5,8 @@
  */
 package git;
 
+import java.util.ArrayList;
+
 
 /**
  *
@@ -22,6 +24,7 @@ public class Lab3204030790Salgado {
      * Por último existirá una clase llamada Repositorio, está contendra las cuatro zonas
      */
     public static void main(String[] args) {
+        /*
         Archivo k= new Archivo("Pepa", 20, 4 ,2000, "Bla Bla \nBla");
         Index s= new Index();
         s.setIndex(k);
@@ -29,6 +32,17 @@ public class Lab3204030790Salgado {
         nuevo= (s.getContenido()).get(0);
         // TODO code application logic here
         System.out.println(nuevo.getNombre());
+        
+        String a = "Dedo21";
+        String b = "Dedo212";
+        if(!a.equals(b)){
+            System.out.println("Solo si ;p");
+        }
+        */
+        ArrayList<String> p;
+        p = new ArrayList<>();
+        boolean a =p.add("Dedo");
+        System.out.println(p.get(0));
     }
     public Repositorio getInit(String nombre, String autor){
         Repositorio repositorio;

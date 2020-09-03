@@ -19,8 +19,7 @@ public class RemoteRepository {
         this.cantidad=0;
     }
     public void setRemoteRepository(Commit elemento){
-        boolean add;
-        add = (this.contenido).add(elemento);
+        (this.contenido).add(elemento);
         this.cantidad= this.cantidad + 1;
     }
     public ArrayList<Commit> getRemoteRepository(){

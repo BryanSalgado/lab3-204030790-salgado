@@ -14,22 +14,22 @@ import java.util.ArrayList;
 public class Commit {
     ArrayList<Archivo> contenido;
     int cantidad;
-    String autor;
+    String mensaje;
     int fecha[];
-    public Commit(String autor, int dia, int mes, int ano, ArrayList<Archivo> contenido, int cantidad){
+    public Commit(String mensaje, int dia, int mes, int ano, ArrayList<Archivo> contenido, int cantidad){
         this.contenido = contenido;
         this.fecha= new int[3];
         this.fecha[0]= dia;
         this.fecha[1]= mes;
         this.fecha[2]= ano;
         this.cantidad= cantidad;
-        this.autor= autor;
+        this.mensaje= mensaje;
     }
     public int[] getFecha(){
         return this.fecha;
     }
-    public String getAutor(){
-        return this.autor;
+    public String getMensaje(){
+        return this.mensaje;
     }
     
     public ArrayList<Archivo> getContenido(){

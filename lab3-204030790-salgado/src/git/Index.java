@@ -19,10 +19,10 @@ public class Index {
         this.cantidad=0;
     }
     public void setIndex(Archivo elemento){
-        boolean add;
-        add = (this.contenido).add(elemento);
+        (this.contenido).add(elemento);
         this.cantidad= this.cantidad + 1;
     }
+    
     public ArrayList<Archivo> getContenido(){
         return this.contenido;
     }

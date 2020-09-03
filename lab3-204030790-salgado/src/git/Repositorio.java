@@ -27,18 +27,28 @@ public class Repositorio {
         this.autor= autor; 
         this.nombre= nombre;
     }
+    
+    
     public void add( ArrayList<String> archivos){
         int nArchivos = archivos.size();
         int nWorkSpace= (this.workspace).getCantidad();
         ArrayList<Archivo> contenido= (this.workspace).getContenido();
         for (int i = 0; i < nArchivos; ++i){
             for (int e = 0; e < nWorkSpace; ++e){
-                if ((contenido.get(e)).getNombre() == archivos.get(i)){//Comparacion de Strings
+                if (((contenido.get(e)).getNombre()).equals(archivos.get(i))){
                     (this.index).setIndex(contenido.get(e));
                 }
                 
             }
         }
+    }
+    public void newCommit(String mensaje, int dia, int mes, int ano){
+        Commit commit;
+        int nArchivos= (this.index).getCantidad();
+        ArrayList<Archivo> contenido = (this.index).getContenido();
+        commit= new Commit(mensaje, dia, mes, ano, contenido, nArchivos);
+        this.index = new Index();
+        (this.localRepository).setLocalRepository(commit);
     }
     
 }
