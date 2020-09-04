@@ -50,5 +50,19 @@ public class Repositorio {
         this.index = new Index();
         (this.localRepository).setLocalRepository(commit);
     }
+    public void push(){
+        int nLocal= (this.localRepository).getCantidad();
+        int nRemote= (this.remoteRepository).getCantidad();
+        ArrayList<Commit> contenidoL= (this.localRepository).getLocalRepository();
+        ArrayList<Commit> contenidoR= (this.remoteRepository).getRemoteRepository();
+        for (int i = 0; i < nLocal; ++i){
+            for (int e = 0; e < nRemote; ++e){
+                if (!((contenidoL.get(e)).getMensaje()).equals((contenidoR.get(e)).getMensaje())){
+                    (this.remoteRepository).setRemoteRepository(contenidoL.get(e));
+                }
+                
+            }
+        }
+    }
     
 }
