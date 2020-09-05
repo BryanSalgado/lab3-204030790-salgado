@@ -64,5 +64,12 @@ public class Repositorio {
             }
         }
     }
+    public void pull(){
+        int ultimo= (this.remoteRepository).getCantidad() - 1;
+        Commit uCommit= ((this.remoteRepository).getRemoteRepository()).get(ultimo);
+        ArrayList<Archivo> contenido = uCommit.getContenido();
+        int cantidad = uCommit.getCantidad();
+        (this.workspace)=new Workspace(contenido, cantidad);                
+    }
     
 }
