@@ -71,5 +71,17 @@ public class Repositorio {
         int cantidad = uCommit.getCantidad();
         (this.workspace)=new Workspace(contenido, cantidad);                
     }
+    public ArrayList<Commit> log(){
+        int nLocal= (this.localRepository).getCantidad();
+        ArrayList<Commit> contenidoL= (this.localRepository).getLocalRepository();
+        ArrayList<Commit> ultimo;
+        ultimo = new ArrayList<>();
+        int i=nLocal -1;
+        while((nLocal-6)<i && 0<=i){
+            ultimo.add(contenidoL.get(i));
+            i=i-1;
+        }
+        return ultimo;
+    }
     
 }
