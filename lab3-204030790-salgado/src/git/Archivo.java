@@ -13,7 +13,7 @@ public class Archivo {
     String nombre;
     int fecha[];
     String contenido;
-    public Archivo(java.lang.String nombre, int dia, int mes, int ano, java.lang.String contenido){
+    public Archivo(String nombre, int dia, int mes, int ano, String contenido){
         this.nombre=nombre;
         this.fecha= new int[3];
         this.fecha[0]=dia;

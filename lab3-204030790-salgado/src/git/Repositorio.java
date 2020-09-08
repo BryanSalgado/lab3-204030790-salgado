@@ -14,7 +14,9 @@ import java.util.ArrayList;
 public class Repositorio {
     String autor;
     String nombre;
-    //Arreglo con las modificaciones
+    ArrayList<String> cambios;
+    int nCambios;
+    int estado;
     Index index;
     Workspace workspace;
     LocalRepository localRepository;
@@ -26,6 +28,9 @@ public class Repositorio {
         this.remoteRepository= new RemoteRepository();
         this.autor= autor; 
         this.nombre= nombre;
+        this.cambios= new ArrayList<>();
+        this.estado=1;
+        this.nCambios=0;
     }
     
     
@@ -41,6 +46,8 @@ public class Repositorio {
                 
             }
         }
+        (this.cambios).add("add");
+        this.nCambios= this.nCambios + 1;
     }
     public void newCommit(String mensaje, int dia, int mes, int ano){
         Commit commit;
@@ -49,6 +56,9 @@ public class Repositorio {
         commit= new Commit(mensaje, dia, mes, ano, contenido, nArchivos);
         this.index = new Index();
         (this.localRepository).setLocalRepository(commit);
+        (this.cambios).add("commit");
+        this.nCambios= this.nCambios + 1;
+        this.estado=0;
     }
     public void push(){
         int nLocal= (this.localRepository).getCantidad();
@@ -63,25 +73,47 @@ public class Repositorio {
                 
             }
         }
+        (this.cambios).add("push");
+        this.nCambios= this.nCambios + 1;
+        this.estado=1;
     }
     public void pull(){
         int ultimo= (this.remoteRepository).getCantidad() - 1;
         Commit uCommit= ((this.remoteRepository).getRemoteRepository()).get(ultimo);
         ArrayList<Archivo> contenido = uCommit.getContenido();
         int cantidad = uCommit.getCantidad();
-        (this.workspace)=new Workspace(contenido, cantidad);                
+        (this.workspace)=new Workspace(contenido, cantidad);
+        (this.cambios).add("pull");
+        this.nCambios= this.nCambios + 1;
     }
-    public ArrayList<Commit> log(){
+    public void log(){
         int nLocal= (this.localRepository).getCantidad();
         ArrayList<Commit> contenidoL= (this.localRepository).getLocalRepository();
-        ArrayList<Commit> ultimo;
-        ultimo = new ArrayList<>();
         int i=nLocal -1;
+        System.out.println("Ultimos 5 commits:\n");
         while((nLocal-6)<i && 0<=i){
-            ultimo.add(contenidoL.get(i));
+            System.out.println((contenidoL.get(i)).getMensaje() + "\n");
+            System.out.println((contenidoL.get(i)).getFecha()[0] + "/");
+            System.out.println((contenidoL.get(i)).getFecha()[1] + "/");
+            System.out.println((contenidoL.get(i)).getFecha()[2] + "/n");            
             i=i-1;
         }
-        return ultimo;
+        
     }
-    
+    public void agregarArchivo(Archivo arch){
+        (this.workspace).setWorkspace(arch);
+    }
+    public void status(){
+        System.out.println("Repositorio: " + (this.nombre));
+        System.out.println("\nCreado por: " +(this.autor) + "\n");
+        System.out.println("Numero de archivos en Workspace: " +(this.workspace).getCantidad());
+        System.out.println("Numero de archivos en Index: " +(this.index).getCantidad());
+        System.out.println("Numero de Commits en Local Repository: " +(this.localRepository).getCantidad());
+        if((this.estado)==1){
+            System.out.println("Remote Repository al dia");
+        }
+        else{
+            System.out.println("Aun hay commits sin agregar al Remote Repository");
+        }
+    }
 }
